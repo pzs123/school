@@ -1,0 +1,608 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>&#x6D59;&#x6C5F;&#x79D1;&#x6280;&#x5B66;&#x9662;&#x529E;&#x516C;&#x81EA;&#x52A8;&#x5316;&#x7CFB;&#x7EDF;协同OA</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="Content-Language" content="zh-CN"/>
+		<meta content="all" name="robots"/>
+		<meta name="author" content="178518(at)gmail.com,赵云"/>
+		<meta name="Copyright" content="www.wisedu.com"/>
+		<meta name="description" content="基于HTML，CSS，JAVASCRIPT的简洁灵活的流行前端框架及交互组件集"/>
+		<meta name="keywords" content="lovey,CSS框架,JS框架"/>
+		<!--lovey核心css-->
+		<link rel="stylesheet" href="/js/mango/style/css/lovey.css?__V=1604240840900" type="text/css"/>
+		<!--OA自定义样式-->
+		<link rel="stylesheet" href="/custom_style/custom.css?__V=1604240840900" type="text/css"/>
+		
+		<!-- 暂时将jquery放在head中，因为jsp标签使用了 $(document).ready -->
+		<!--jquery核心js文件-->
+		<script type="text/javascript" src="/js/mango/js/jquery.min.js?__V=1604240840900"></script>
+		<!--懒加载核心js文件-->
+		<script type="text/javascript" src="/js/mango/js/easyloader.js?__V=1604240840900"></script>
+		
+		<script type="text/javascript" src="/js/oa/base/commfunction_jquery.js?__V=1604240840900"></script>
+		
+		
+		<script type="text/javascript">
+			//判断当前页面是否被Iframe集成
+		    easyloader.isIframe = (window != top);
+		    //校验组件
+		    easyloader.hideFormError=true;
+		    //启用SNS风格，动态程序在高层页面全局设定
+		    easyloader.dialogCssName = "dialog_style02";
+		    easyloader.URI = "";
+		    easyloader.showSecond=false;//不显示秒
+		    easyloader.allowClose = false;//success对话框,去除关闭按钮
+		    var isIe6 = navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.split(";")[1].replace(/[ ]/g, "") == "MSIE6.0";
+		    var isShowQueryArea = false;  //查询区域默认为展开
+		    
+		    //刷新制定tab
+		    function refresh() {
+		        navtab.reload(navtab.getSelectedTabItemID());
+		    }
+		    
+		    $(document).ready(function(){
+		        using("dialog",function(){});
+		
+		        /*$(window).unbind("focus").bind("focus",function() {
+		            var tabElement;
+		            var navtab;
+		            var tabid;
+		        	try{
+		        		tabElement = top.$("#content_right");
+		                navtab = tabElement.ligerGetTabManager();
+		                tabid = navtab.getSelectedTabItemID();
+		                storeCurrentModuleId(tabid);
+		        	}catch(e){
+		        		
+		        	}
+		            
+		        })*/
+		    });
+		
+		    function storeCurrentModuleId(tabid) {
+		        if (tabid == "-1") {
+		            setCookie("currentModuleId","");
+		        } else {
+		            setCookie("currentModuleId",tabid);
+		        }
+		    }
+		
+		    function setCookie(name, value) {
+		        var exdate=new Date();
+		        exdate.setDate(exdate.getDate()+30);
+		        document.cookie= name + "=" + value + ";expires="+exdate.toGMTString()+";path=/";
+		    }
+		    
+		    function mangoFrameBack() {
+                history.back();
+            }
+		</script>
+	</head>
+	<body>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+    .announcement_title {
+        text-align:center;       
+        font-size:25px;
+        font-weight:bold;
+        font-family: Microsoft YaHei;
+        margin-top:30px;
+    }
+
+    .publish_info {
+        line-height:22px;
+        text-align:center;
+        margin-top:20px;
+        border-top:#9F9F9F 1px solid;
+        padding-top:20px;
+        padding-bottom:20px;
+    }
+
+    .publish_info .label {
+        padding-right:2px;
+        padding-left:15px;       
+        font-size: 15px;
+        color:#000;
+    }
+
+    .announcement_content{
+        padding-top: 20px;
+        border-bottom:#9F9F9F 1px solid;
+        padding-bottom: 30px;
+    	font-size: 14px;
+    	line-height: 2;
+    	color:#000;
+    }
+
+    .announcement_attachment{
+        padding-top: 20px;
+        text-align: left;
+        font-size: 14px;
+        color:#000;
+    }
+    
+    .announcement_content span span{
+    	line-height: 30px;
+    }
+    
+    .announcement_content p span{
+    	line-height: 30px;
+    }
+</style>
+
+<div id="content">
+	<div class="ui_container_fluid mt30">
+		
+			
+		
+		
+		
+	        
+	    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	$(document).ready(function () {
+	    $('.ui_table_style_flat tr:odd').addClass("odd");
+	    $('.ui_table_style_flat tr:even').addClass("even");
+	    
+	    //列表字体大小调整(tao, 2015.06.24)
+	    $(".typeface").click(function(){
+			var fontSize = $(this).data("fontsize");
+			if(fontSize){
+				$(".ui_table_style_flat").removeClass("font-x-large font-large");
+				$(".ui_table_style_flat").addClass(fontSize);
+			} else {
+				$(".ui_table_style_flat").removeClass("font-x-large font-large");
+			}
+			
+		});
+	});
+</script>
+
+    	
+			
+		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/jquery.PrintArea.js?__V=1433380274000"></script>
+
+
+<style>
+.handleStyle {
+	width: 95%;
+	border: 1px solid #8AB6DD;
+}
+
+.handleStyle2 {
+	border: 1px solid #8AB6DD;
+}
+
+.tabDiv {
+	position: relative;
+	top: 10px;
+	background-color: #CFE1F6;
+	width: 55px;
+	left: 17px;
+}
+
+.handle_button {
+	background: url(/images/oa/buttonImages/button_input_handle.png ) no-repeat top right;
+	display: block;
+	float: left;
+	width: 114px;
+	height: 43px;
+	cursor: pointer;
+	outline: none
+}
+
+.return_button {
+	background: url(/images/oa/buttonImages/button_input_return.png ) no-repeat top right;
+	display: block;
+	float: left;
+	width: 114px;
+	height: 43px;
+	cursor: pointer;
+	outline: none
+}
+
+.back_button {
+	background: url(/images/oa/buttonImages/button_input_back.png ) no-repeat top right;
+	display: block;
+	float: left;
+	width: 114px;
+	height: 43px;
+	cursor: pointer;
+	outline: none
+}
+
+.button_input_right {
+	background: url(/images/oa/buttonImages/button_input_right.gif ) no-repeat top right;
+	height: 24px;
+	display: block;
+	float: left;
+	width: 18px;
+	cursor: pointer;
+	outline: none
+}
+
+.button_input_ok {
+	background: url(/images/oa/buttonImages/button_input_ok.gif ) no-repeat top left;
+	font-size: 12px;
+	height: 24px;
+	border: 0;
+	text-indent: 35px;
+	float: left;
+	cursor: pointer;
+	outline: none
+}
+
+.button_input_cancel {
+	background: url(/images/oa/buttonImages/button_input_cancel.gif ) no-repeat top left;
+	font-size: 12px;
+	height: 24px;
+	border: 0;
+	text-indent: 35px;
+	float: left;
+	cursor: pointer;
+	outline: none
+}
+
+.button_input_reset {
+	background: url(/images/oa/buttonImages/button_input_reset.gif ) no-repeat top left;
+	font-size: 12px;
+	height: 24px;
+	border: 0;
+	text-indent: 35px;
+	float: left;
+	cursor: pointer;
+	outline: none
+}
+
+.button_input_back {
+	background: url(/images/oa/buttonImages/button_input_back.gif ) no-repeat top left;
+	font-size: 12px;
+	height: 24px;
+	border: 0;
+	text-indent: 35px;
+	float: left;
+	cursor: pointer;
+	outline: none
+}
+
+.button_input_save {
+	background: url(/images/oa/buttonImages/button_input_save.gif ) no-repeat top left;
+	font-size: 12px;
+	height: 24px;
+	border: 0;
+	text-indent: 35px;
+	float: left;
+	cursor: pointer;
+	outline: none
+}
+</style>
+
+
+
+
+
+
+
+
+		<div id="mainDiv" style="min-width: 960px;padding-left: 60px;">
+			<form id="announcementInfoForm" name="announcementInfoForm" method="post"  action="/announcement/workflowPublishAnnouncement.do">
+	           <input type="hidden" name="pkId" value="922940">
+	           <input type="hidden" name="processinstanceId" value="">
+	           <input type="hidden" id="docRelayTitle" value="（结束）浙江科技学院“省级一流本科专业建设点”拟推荐项目公示2">
+	           <div id="dataForm" class="announcement">
+                    <div class="announcement_title">
+                        （结束）浙江科技学院“省级一流本科专业建设点”拟推荐项目公示2
+                    </div>
+                    <div class="publish_info">
+                        
+						 
+						
+                        <span class="label">发布部门<span>
+                        <span class="text">
+                            [学校办公室]
+                        </span>
+                        
+						
+                        <span class="label">发布时间<span>
+                        <span class="text">
+                            [2020-11-02 13:54]
+                        </span>
+                        
+                        
+                        
+                    </div>
+                    <div class="announcement_content" style="width:900px;align:center;">
+                        <p>
+	<p class="MsoNormal" style="text-align:left;text-indent:32pt;">
+		<span style="font-family:仿宋_GB2312_GB2312;font-size:16pt;"><span>根据《</span></span><span style="font-family:仿宋_GB2312_GB2312;font-size:16pt;"><span>教育部高等教育司关于开展</span>2020年度国家级一流本科专业建设点报送工作的通知》（教高司函〔2020〕15号）和省教育厅的通知要求，我校新增加一个省级一流本科专业建设点推荐名额，教务处征询省级一流本科专业建设点评审专家组意见，同意按评审排序依次推荐，拟推荐“材料科学与工程”专业申报省一流本科专业建设点项目，具体如下：<span>&nbsp;</span></span><span style="font-family:Calibri;font-size:12pt;">&nbsp;</span><span style="font-family:Calibri;font-size:10.5pt;"></span>
+	</p>
+	<p align="center" class="MsoNormal" style="text-align:center;text-indent:0pt;">
+		<b><span style="font-family:仿宋_GB2312;font-size:14pt;font-weight:bold;"><span>拟推荐申报省级一流本科专业建设点项目专业</span></span></b><span style="font-family:Calibri;font-size:12pt;">&nbsp;</span><span style="font-family:Calibri;font-size:12pt;">&nbsp;</span><span style="font-family:Calibri;font-size:10.5pt;"></span>
+	</p>
+	<p class="MsoNormal" style="text-align:left;text-indent:32pt;">
+		<span style="font-family:仿宋_GB2312_GB2312;font-size:16pt;"><span>现予以公示，公示时间为</span>2020年11月2日至2020年11月6日，如有异议，请以书面形式反映，反映问题要实事求是，署本人真实姓名。 </span><span style="font-family:Calibri;font-size:10.5pt;"></span>
+	</p>
+	<p class="MsoNormal" style="text-align:left;text-indent:32pt;">
+		<span style="font-family:仿宋_GB2312_GB2312;font-size:16pt;"><span>联系电话：</span> </span><span style="font-family:Calibri;font-size:10.5pt;"></span>
+	</p>
+	<p class="MsoNormal" style="text-align:left;text-indent:32pt;">
+		<span style="font-family:仿宋_GB2312_GB2312;font-size:16pt;"><span>纪检监察室：</span>85070103 </span><span style="font-family:Calibri;font-size:10.5pt;"></span>
+	</p>
+	<p class="MsoNormal" style="text-align:left;text-indent:32pt;">
+		<span style="font-family:仿宋_GB2312_GB2312;font-size:16pt;"><span>教务处：</span>85070118 </span><span style="font-family:Calibri;font-size:10.5pt;"></span>
+	</p>
+	<p class="MsoNormal" style="text-align:left;text-indent:32pt;">
+		<span style="font-family:宋体;font-size:16pt;">&nbsp;</span><span style="font-family:Calibri;font-size:12pt;">&nbsp;</span><span style="font-family:Calibri;font-size:12pt;">&nbsp;</span><span style="font-family:Calibri;font-size:10.5pt;"></span>
+	</p>
+	<p align="right" class="MsoNormal" style="text-align:right;text-indent:32pt;">
+		<span style="font-family:仿宋_GB2312;font-size:16pt;"><span>教务处</span> &nbsp;&nbsp;</span><span style="font-family:Calibri;font-size:12pt;">&nbsp;</span><span style="font-family:Calibri;font-size:10.5pt;"></span>
+	</p>
+	<p align="right" class="MsoNormal" style="text-align:right;text-indent:32pt;">
+		<span style="font-family:仿宋_GB2312;font-size:16pt;">2020年11月2日</span><span style="font-family:Calibri;font-size:12pt;">&nbsp;</span><span style="font-family:Calibri;font-size:12pt;">&nbsp;</span><span style="font-family:Calibri;font-size:10.5pt;"></span>
+	</p>
+	<p class="MsoNormal" style="text-align:left;text-indent:32pt;">
+		<span style="font-family:Calibri;font-size:12pt;">&nbsp; </span><span style="font-family:Calibri;font-size:10.5pt;"></span>
+	</p>
+	<p class="p">
+		<span style="font-family:Calibri;font-size:12pt;"></span>
+	</p>
+	<p class="MsoNormal">
+		<span style="font-family:Calibri;font-size:10.5pt;"></span>
+	</p>
+</p>
+                    </div>
+                    <div class="announcement_attachment">
+                        附件资料
+                    </div>
+                    <div>
+                        <div id="upload_files_plane"></div>
+                    </div>
+		        </div>
+				
+			</form>
+		</div>
+		
+	</div>
+	
+</div>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/oa/base/commfunction_jquery.js?__V=1500623768000"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		oaAttachmentShow({
+			showDivId : "upload_files_plane",
+			resourceType : "321",
+			resourceId : "922940"
+		});
+
+		var winWidth;
+		if (window.innerWidth) {
+			winWidth = window.innerWidth;
+		} else if ((document.body) && (document.body.clientWidth)) {
+			winWidth = document.body.clientWidth;
+		}
+		var elementWidth = (parseInt(winWidth) - parseInt(960) - parseInt(60)) / 2;
+		if (elementWidth < 0) {
+			elementWidth = 5;
+		}
+		var announcementElement = document.getElementById("dataForm");
+		if (announcementElement != null) {
+			if (!isNaN(elementWidth)) {
+				announcementElement.style.marginLeft = elementWidth + "px";
+				announcementElement.style.marginRight = elementWidth + "px";
+			}
+		}
+
+		formActionFixedBottom();
+	});
+
+	function backfunction() {
+		window.history.go(-1);
+	}
+
+	function publish() {
+		var action = '/announcement/publishAnnouncement.do?pkId=922940&moduleId=';
+		$.ligerDialog.confirm("确定要发布？", "发布通知公告", function(status) {
+			if (status == true) {
+				$.ajax({
+					type : 'POST',
+					url : action,
+					success : function(ret) {
+						var o = jQuery.parseJSON(ret);
+						if (o && o.status == '1') {
+							$("#publish").html('<input type="button" class="ui_btn" style="padding-left: 20px;" value="取消发布"' + 'onclick="cancelPublish();" />');
+							$.ligerDialog.success('发布成功！', '提示', function() {
+								window.location.reload();
+							});
+						}
+					},
+					error : function() {
+						$.ligerDialog.error('发布失败！', '提示', function() {
+							window.location.reload();
+						});
+					}
+				});
+			}
+		});
+
+	}
+
+	function cancelPublish() {
+		var action = '/announcement/cancelPublish.do?pkId=922940&moduleId=';
+		$.ligerDialog.confirm("确定要取消发布？", "取消发布通知公告", function(status) {
+			if (status == true) {
+				$.ajax({
+					type : 'POST',
+					url : action,
+					success : function(ret) {
+						var o = jQuery.parseJSON(ret);
+						if (o.status == '1') {
+							$("#publish").html('<input type="button" class="ui_btn" style="padding-left: 20px;" value="发布"' + 'onclick="publish();" />');
+							$.ligerDialog.success('取消发布成功！', '提示', function() {
+								window.location.reload();
+							});
+						}
+					},
+					error : function() {
+						$.ligerDialog.error('取消发布失败！', '提示', function() {
+							window.location.reload();
+						});
+					}
+				});
+
+			}
+		});
+
+	}
+
+	//查看流程图
+	function showWorkItemImage() {
+		msgDg = new GE.widget.Dialog({
+			"class" : "dialog-1",
+			zIndex : 600,
+			fixedCenter : true,
+			close : false,
+			modal : true
+		});
+		msgDg.setHeader("<h3></h3>");
+		msgDg.setBody("请稍等...");
+		msgDg.setFooter("");
+		msgDg.render();
+		msgDg.show();
+		WE.app.PopWindow.pop({
+			windowTitle : '查阅流程图',
+			reqUrl : '/workFlow/inShowImage.do?workitemid=',
+			winHeight : 495,
+			winWidth : 830,
+			overflowAction : 'auto'
+		});
+		window.setTimeout(function() {
+			msgDg.hide("fade", 1);
+		}, 2000);
+	}
+
+	//查看催办历史
+	function showUrgedHandleDetail() {
+		$.ligerDialog.open({
+			className : 'tab_style04',
+			width : 800,
+			height : 400,
+			url : '/workFlow/viewUrgedHandleHistory.do?workitemid=',
+			title : '查阅催办历史'
+		});
+		//WE.app.PopWindow.pop({windowTitle:'查阅催办历史',reqUrl:'/workFlow/viewUrgedHandleHistory.do?workitemid='});
+	}
+
+	//查看审批记录
+	function showConfirmListDetail() {
+		$.ligerDialog.open({
+			className : 'tab_style04',
+			width : 800,
+			height : 400,
+			url : '{contextPath}/workFlow/viewConfirmListDetail.do?workitemid=&hisWorkItemId=',
+			title : '查看审批记录'
+		});
+		//WE.app.PopWindow.pop({windowTitle:'查看审批记录',reqUrl:'/workFlow/viewConfirmListDetail.do?workitemid=&hisWorkItemId=',winWidth:800,winHeight:400,overflowAction:'auto'});
+	}
+	
+	//查看阅读情况
+    function readfunction(pkId){
+   	
+        
+   	
+   	 	//已发布且发布范围为部分公开
+   	 	oaHrefAddPage('/announcement/readAnnouncement.do?pkId='+pkId);
+   	 
+    }
+</script>
+
+	</body>
+</html>

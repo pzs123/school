@@ -1,0 +1,15 @@
+
+Request URL: http://oa2.zust.edu.cn/forum/attachments.do?resourceId=901234&resourceType=321
+Request Method: GET
+
+Accept: application/json, text/javascript, */*; q=0.01
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9
+Connection: keep-alive
+Cookie: iPlanetDirectoryPro=AQIC5wM2LY4Sfcyjtm%2FrdVwvpU0KmEPSMCZ7AYmMLrmaQHg%3D%40AAJTSQACMDE%3D%23; MOD_AUTH_CAS=MOD_AUTH_ST-53870-lB7EqWJBLxHwjOonc4bX1601972280998-5YGC-cas; JSESSIONID=0000klDn8BsB8rd4pxrzoW0Dlue:19vn53d81; iPlanetDirectoryPro=AQIC5wM2LY4Sfcyjtm%2FrdVwvpU0KmEPSMCZ7AYmMLrmaQHg%3D%40AAJTSQACMDE%3D%23
+Host: oa2.zust.edu.cn
+Referer: http://oa2.zust.edu.cn/announcement/infoAnnouncement.do?pkId=901234
+User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+X-Requested-With: XMLHttpRequest
+
+{"msg":"oye","iPlanetDirectoryPro":"AQIC5wM2LY4Sfcyjtm%2FrdVwvpU0KmEPSMCZ7AYmMLrmaQHg%3D%40AAJTSQACMDE%3D%23","templateContent":"<style type=\"text/css\">\r\n\tul .attachments_list li {\r\n        background-color:  #FFFFFF;\r\n        border-color: #FFFFFF\r\n\t}\r\n\r\n\tul .attachments_list .attach_name {\r\n\t\tfont-size: 13px;\r\n\t}\r\n</style>\r\n\r\n\r\n<textarea id=\"fileList\" style=\"display:none\">\r\n    <ul class=\"attachmentPanel\">\r\n        {#foreach $T as file}\r\n        <li initId=\"{$T.file.id}\" id=\"file_{$T.file.id}\">\r\n            <span>\r\n                <a href=\"{$T.file.downLoadUrl}\" class=\"attach_name\">\r\n                    {$T.file.name}\r\n                </a>\r\n               \t<input type=\"hidden\" name=\"model_att_name\" value=\"{$T.file.name}\"/>\r\n            </span>\r\n            <a href=\"javascript:void(0);\" onclick=\"$.loveySelectFile.remove('{$T.file.id}','{$T.file.deleteUrl}')\"></a>\r\n        </li>\r\n        {#/for}\r\n    </ul>\r\n</textarea>","status":"1","files":[{"creator":"115032","size":22528,"fileSuffix":"doc","deleteUrl":"/forum/attachments.do?resourceId=901234&resourceType=321&attachId=47531","fileName":"附件22019年录取教师派出情况统计表.....doc","name":"附件22019年录取教师派出情况统计表.doc","filePath":"/opt/wiscom/ccs/postattachments/附件22019年录取教师派出情况统计表.doc","created":"2020-09-23 08:41:07","downLoadUrl":"/downloadattachment/47531/附件22019年录取教师派出情况统计表.doc","id":47531},{"creator":"115032","size":23040,"fileSuffix":"doc","deleteUrl":"/forum/attachments.do?resourceId=901234&resourceType=321&attachId=47532","fileName":"附件3国家公派出国留学人员派出前国内管理....doc","name":"附件3国家公派出国留学人员派出前国内管理申请表.doc","filePath":"/opt/wiscom/ccs/postattachments/附件3国家公派出国留学人员派出前国内管理申请表.doc","created":"2020-09-23 08:41:07","downLoadUrl":"/downloadattachment/47532/附件3国家公派出国留学人员派出前国内管理申请表.doc","id":47532}]}

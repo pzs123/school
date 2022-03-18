@@ -1,0 +1,344 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>&#x6D59;&#x6C5F;&#x79D1;&#x6280;&#x5B66;&#x9662;&#x529E;&#x516C;&#x81EA;&#x52A8;&#x5316;&#x7CFB;&#x7EDF;协同OA</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="Content-Language" content="zh-CN"/>
+		<meta content="all" name="robots"/>
+		<meta name="author" content="178518(at)gmail.com,赵云"/>
+		<meta name="Copyright" content="www.wisedu.com"/>
+		<meta name="description" content="基于HTML，CSS，JAVASCRIPT的简洁灵活的流行前端框架及交互组件集"/>
+		<meta name="keywords" content="lovey,CSS框架,JS框架"/>
+		<!--lovey核心css-->
+		<link rel="stylesheet" href="/js/mango/style/css/lovey.css?__V=1604240840900" type="text/css"/>
+		<!--OA自定义样式-->
+		<link rel="stylesheet" href="/custom_style/custom.css?__V=1604240840900" type="text/css"/>
+
+		<!-- 暂时将jquery放在head中，因为jsp标签使用了 $(document).ready -->
+		<!--jquery核心js文件-->
+		<script type="text/javascript" src="/js/mango/js/jquery.min.js?__V=1604240840900"></script>
+		<!--懒加载核心js文件-->
+		<script type="text/javascript" src="/js/mango/js/easyloader.js?__V=1604240840900"></script>
+
+		<script type="text/javascript" src="/js/oa/base/commfunction_jquery.js?__V=1604240840900"></script>
+
+
+		<script type="text/javascript">
+			//判断当前页面是否被Iframe集成
+		    easyloader.isIframe = (window != top);
+		    //校验组件
+		    easyloader.hideFormError=true;
+		    //启用SNS风格，动态程序在高层页面全局设定
+		    easyloader.dialogCssName = "dialog_style02";
+		    easyloader.URI = "";
+		    easyloader.showSecond=false;//不显示秒
+		    easyloader.allowClose = false;//success对话框,去除关闭按钮
+		    var isIe6 = navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.split(";")[1].replace(/[ ]/g, "") == "MSIE6.0";
+		    var isShowQueryArea = false;  //查询区域默认为展开
+
+		    //刷新制定tab
+		    function refresh() {
+		        navtab.reload(navtab.getSelectedTabItemID());
+		    }
+
+		    $(document).ready(function(){
+		        using("dialog",function(){});
+
+		        /*$(window).unbind("focus").bind("focus",function() {
+		            var tabElement;
+		            var navtab;
+		            var tabid;
+		        	try{
+		        		tabElement = top.$("#content_right");
+		                navtab = tabElement.ligerGetTabManager();
+		                tabid = navtab.getSelectedTabItemID();
+		                storeCurrentModuleId(tabid);
+		        	}catch(e){
+
+		        	}
+
+		        })*/
+		    });
+
+		    function storeCurrentModuleId(tabid) {
+		        if (tabid == "-1") {
+		            setCookie("currentModuleId","");
+		        } else {
+		            setCookie("currentModuleId",tabid);
+		        }
+		    }
+
+		    function setCookie(name, value) {
+		        var exdate=new Date();
+		        exdate.setDate(exdate.getDate()+30);
+		        document.cookie= name + "=" + value + ";expires="+exdate.toGMTString()+";path=/";
+		    }
+
+		    function mangoFrameBack() {
+                history.back();
+            }
+		</script>
+	</head>
+	<body>
+
+
+
+
+
+
+<script type="text/javascript" src="/messages.do?__V=1604240840900"></script>
+<script type="text/javascript" src="/js/utilities-241.js?__V=1430174648000"></script>
+<script type="text/javascript" src="/js/ge.js?__V=1433178846000"></script>
+<script type="text/javascript" src="/js/wiscom.js?__V=1430174648000"></script>
+<script type="text/javascript" src="/js/ccs-min.js?__V=1430174704000"></script>
+<script type="text/javascript" src="/oa/jquery-1.4.2.min.js?__V=1430174442000"></script>
+<script type="text/javascript" src="/js/jsmodule/app-alertwindowpop.js?__V=1430174702000"></script>
+<script type="text/javascript" src="/js/mango/js/jquery.min.js?__V=1500623768000"></script>
+<script type="text/javascript" src="/js/mango/js/easyloader.js?__V=1500623768000"></script>
+<script type="text/javascript" src="/js/mouse-over-out.js?__V=1430174650000"></script>
+
+
+<link rel="stylesheet" href="/css/docView.css?__V=1500623761000" type="text/css"/>
+<link rel="stylesheet" href="/css/reset.css?__V=1431913108000" type="text/css"/>
+<script src="/js/flexpaper_flash.js"></script>
+
+<script type="text/javascript">
+   $(function(){
+	   if(false){
+		   $(".doc-info").toggle(function(){
+				if($(".doc-info").is(":visible")){
+					$("#icon-docview").removeClass("icon-docview-plus").addClass("icon-docview-minus");
+				}else{
+					$("#icon-docview").removeClass("icon-docview-minus").addClass("icon-docview-plus");
+				}
+			});
+	   }
+	$(".txt-link").on("click", function(){
+		$(".doc-info").toggle(function(){
+			if($(".doc-info").is(":visible")){
+				$("#icon-docview").removeClass("icon-docview-plus").addClass("icon-docview-minus");
+			}else{
+				$("#icon-docview").removeClass("icon-docview-minus").addClass("icon-docview-plus");
+			}
+		});
+	});
+   });
+
+
+   function viewOnline(attId,ext){
+
+		//判断文件是word还是pdf,不同文件走不同转换方法
+
+		var reqUrl =  "/forum/getSwfOfWordOrPdf.do?attId="+ attId +"&ext="+ ext;
+
+		//将word转换成pdf,再将pdf转换成swf
+
+		jQuery.ajax({
+			url:reqUrl,
+			type:'post',
+			success : function(o){
+
+				var _e = jQuery.parseJSON(o);
+
+				if(_e.imageUrl!=null){
+
+					jQuery.ligerDialog.open({
+				    	 width:870,
+				         height:575,
+				         showButton : false,
+				         title : "在线查看图片",
+				         scroll: true,
+				         url: "/forum/imageViewOnline.do?attId="+attId+"&ext="+_e.ext
+				    })
+
+				 }
+
+				 else if((_e.imageUrl == null)&&(typeof(_e.status)=="undefined")){
+
+					 jQuery.ligerDialog.warn('查找不到该图片导致当前在线查看图片失败！');
+
+				 }
+
+				 if(_e.status == 1){
+
+				 //已经转换成功，就获取转换后的**.swf文件，调用查看doc.View.jsp
+
+					jQuery.ligerDialog.open({
+					    	 width:870,
+					         height:575,
+					         showButton : false,
+					         title : "在线查看文件",
+					         scroll: true,
+					         url: "/forum/fileViewOnline.do?attId="+attId
+					 })
+
+
+				} else if(_e.status == 0){
+
+					if(_e.ext=="doc"||_e.ext=="docx"){
+
+						jQuery.ligerDialog.warn('当前在线查看改Word文件失败！');
+
+					}else if(_e.ext=="pdf"){
+
+						jQuery.ligerDialog.warn('当前在线查看改pdf文件失败！');
+
+					}
+
+				}
+			}
+		})
+
+	}
+
+   function downFile(downLoadUrl){
+	   window.location.href = downLoadUrl;
+   }
+
+   function closeWindows() {
+	   open(location, '_self').close();
+   }
+   function downloadForOpenFile(content,title){
+	    jQuery.ajax({
+	        type : "POST",
+	        url : encodeURI("/fileReleasePub/hasFileReleasePub.do?content="+content+"&moduleId="),
+	        success : function(o) {
+	            var _e = jQuery.parseJSON(o);
+	            if (_e && _e.status == 1) {
+	                window.location.href = encodeURI("/fileReleasePub/downloadFileReleasePub.do?type=html&content="+content+"&title="+title+"&moduleId=");
+	            } else if(_e && _e.status == 2) {
+	            	window.location.href = encodeURI("/fileReleasePub/downloadFileReleasePub.do?type=doc&content="+content+"&title="+title+"&moduleId=");
+	            } else if(_e.status == 0){
+	                jQuery.ligerDialog.warn("没有可下载的文件！","提示");
+	            } else {
+	                jQuery.ligerDialog.alert("下载失败！","提示");
+	            }
+	        },
+	        error : function(o) {
+	            jQuery.ligerDialog.alert("下载失败！");
+	        }
+	    });
+	}
+</script>
+<div class="docViewWrap" style="width:90%">
+        <h1>
+            <div style="float:left;width:80%;word-wrap:break-all;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;" title="浙江科技学院关于给予Barry Thierno Yaya等5名同学退学处理的决定">浙江科技学院关于给予Barry Thierno Yaya等5名同学退学处理的决定</div>
+            <a class="txt-link" href="javascript:;"><i id="icon-docview" class="icon icon-docview-plus"></i> </a>
+        </h1>
+        <div class="doc-info" style="display:none;">
+            <ul class="info-list">
+                <li>
+                    <h2>分类：</h2>
+                    <p> 行政文件</p>
+                </li>
+                <li>
+                    <h2>文号：</h2>
+                    <p> 浙科院教〔2020〕22号</p>
+                </li>
+                <li>
+                    <h2>发布人：</h2>
+                    <p>余迪毅</p>
+                </li>
+                <li>
+                    <h2>发布时间：</h2>
+                    <p>
+                      2020-11-03 00:00:00.0
+                    </p>
+                </li>
+
+
+            </ul>
+        </div>
+
+        <div class="attachmentWrap">
+			<ul class="attachmentList clearfix">
+
+
+      	        <h1>
+                  		暂无附件
+        	    </h1>
+
+			</ul>
+		</div>
+
+	    <div id="viewerPlaceHolder" style="width:100%;height:520px;"></div>
+	        <script type="text/javascript">
+				var fp = new FlexPaperViewer(
+						 '/FlexPaperViewer',
+						 'viewerPlaceHolder', { config : {
+						 //SwfFile : escape('/swf/'++'.swf'),
+						 SwfFile : escape('/forum/viewFlash.do?resourceId=115757_72886'),
+						 Scale : 1.3,
+						 ZoomTransition : 'easeOut',
+						 ZoomTime : 0.5,
+						 ZoomInterval : 0.2,
+						 FitPageOnLoad : false,
+						 FitWidthOnLoad : false,
+						 FullScreenAsMaxWindow : false,
+						 ProgressiveLoading : false,
+						 MinZoomSize : 0.2,
+						 MaxZoomSize : 5,
+						 SearchMatchAll : false,
+						 InitViewMode : 'Portrait',
+						 PrintPaperAsBitmap : false,
+						 PrintEnabled: 'true',
+						 PrintToolsVisible: 'true',
+						 ViewModeToolsVisible : true,
+						 ZoomToolsVisible : true,
+						 NavToolsVisible : true,
+						 CursorToolsVisible : true,
+						 SearchToolsVisible : true,
+  						 localeChain: 'zh_CN'
+						 }});
+
+	        </script>
+
+
+<br/>
+
+</div>
+
+<div align="center">
+
+		<input type="button" onclick="downloadForOpenFile('115757_72886','浙江科技学院关于给予Barry Thierno Yaya等5名同学退学处理的决定')" class="ui_btn ui_btn_primary" value="下载正文"/>
+
+    <input type="button" onclick="closeWindows()" class="ui_btn ui_btn_primary" value="关闭"/>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</body>
+</html>
